@@ -77,6 +77,7 @@ def simple_upload(request):
 
         imported_data = dataset.load(new_contacts.read())
 
-        person_resource.import_data(dataset, dry_run=False)  # Actually import now
+        contact_resource.import_data(dataset, dry_run=False)  # Actually import now
+
 
     return render(request, 'contacts/import.html')
