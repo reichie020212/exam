@@ -1,0 +1,28 @@
+{% extends 'contacts/base.html' %}
+
+{% block content %}
+	
+	<form class="form-inline" method="POST" class="post-form">{% csrf_token %}
+		<table class="table table-hover">
+			<tr>
+			<th>First Name</th>
+	        <th>Last Name</th>
+	        <th>Contact Number</th>
+	        <th>Address</th>
+		</tr>
+		<tr>
+			<td>{{ form.first_name }}</td>
+			<td>{{ form.last_name }}</td>
+			<td>{{ form.contact_number }}</td>
+			<td>{{ form.address }}</td>
+		</tr>
+		</table>
+		<div class="homebutton">
+     	<button type="submit" class="btn btn-primary">Save</button>
+
+         <a href="/home/" class="btn btn-primary">Back</a>
+     </div>
+    </form>
+    <div class="homebutton">
+</div>
+{% endblock %}

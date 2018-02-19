@@ -1,0 +1,27 @@
+{% extends 'contacts/base.html' %}
+
+{% block content %}
+<h2>Are you sure you want to delete this record?</h2>
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Contact Number</th>
+        <th>Address</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{contact_info.first_name}}</td>
+      <td>{{contact_info.last_name}}</td>
+      <td>{{contact_info.contact_number}}</td>
+      <td>{{contact_info.address}}</td>
+      </tr>
+    </tbody>
+</table>
+<div class="homebutton">
+  <a href="delete/" class="btn btn-primary">Delete</a>
+  <a href="/home/" class="btn btn-primary">Back</a>
+</div>  
+  {% endblock %}
