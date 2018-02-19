@@ -5,9 +5,11 @@ from django.shortcuts import render
 from django.shortcuts import redirect, get_object_or_404
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
+from tablib import Dataset
 
 from .models import ContactInfo
 from .forms import ContactInfoForm
+from .resources import ContactInfoResource
 # Create your views here.
 def signup(request):
     if request.method == 'POST':
@@ -20,6 +22,7 @@ def signup(request):
     else:
         form = UserCreationForm()
     return render(request, 'registration/signup.html', {'form': form})
+
 @login_required(login_url='/')
 def view_home(request):
 	contact_info = ContactInfo.objects.filter(created_by=request.user)
@@ -65,3 +68,15 @@ def delete(request,pk):
 	contact_info = get_object_or_404(ContactInfo,pk=pk)
 	contact_info.delete()
 	return redirect('view_home')
+
+def simple_upload(request):
+    if request.method == 'POST':
+        contact_resource = ContactInfoResource()
+        dataset = Dataset()
+        new_contacts = request.FILES['myfile']
+
+        imported_data = dataset.load(new_contacts.read())
+
+        person_resource.import_data(dataset, dry_run=False)  # Actually import now
+
+    return render(request, 'contacts/import.html')

@@ -37,7 +37,12 @@ input[type=submit] {
 input[type=submit]:hover {
     background-color: #45a049;
 }
-a{
+.mybutton a{
     position: relative;
     left:23%;
+}
+
+.signupbtn{
+    position: absolute;
+    left:30%;
 }
